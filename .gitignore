@@ -1,0 +1,57 @@
+# Git Ignore
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Data and models
+data/inputs/*
+!data/inputs/.gitkeep
+data/outputs/*
+!data/outputs/.gitkeep
+data/models/*
+!data/models/.gitkeep
+data/datasets/*
+!data/datasets/.gitkeep
+
+# Model weights & binaries (Never commit weights)
+*.pt
+*.pth
+*.onnx
+*.engine
+*.trt
+*.bin
+*.weights
+
+# Large archive files & evidence zips
+*.zip
+*.tar
+*.tar.gz
+*.7z
+evidence/visionstream_gate2_evidence-*.zip
+evidence/gate1-colab-trial/visionstream_gate1_evidence-*.zip
+evidence/gate2-colab-training/visionstream_gate2_evidence-*.zip
+evidence/visionstream_gate2_evidence/weights/
+evidence/gate2-colab-training/weights/
+evidence/gate1-colab-trial/audit_extracted/
+
+# Logs & temporary metrics
+logs/*
+!logs/.gitkeep
+*.log
+*.jsonl
+*.jsonl.*
+
+# Environments & IDE
+.env
+.env.*
+.venv/
+env/
+venv/
+.idea/
+.vscode/
+
+# OS specific
+.DS_Store
+Thumbs.db
+Desktop.ini

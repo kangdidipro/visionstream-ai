@@ -1,0 +1,28 @@
+{
+  "stream_id": "cam-subway-01",
+  "tracking_session_id": "sprint1-full-benchmark",
+  "video_duration_sec": 49.67,
+  "total_video_frames": 596,
+  "processed_frames": 596,
+  "total_pipeline_time_sec": 48.517,
+  "average_pipeline_fps": 12.28,
+  "average_inference_latency_ms": 62.23,
+  "average_pipeline_frame_latency_ms": 77.88,
+  "unique_track_ids_count": 7,
+  "unique_track_ids": [
+    1,
+    2,
+    4,
+    7,
+    8,
+    10,
+    11
+  ],
+  "total_detections_logged": 393,
+  "model_path": "/app/data/models/yolov8n.pt",
+  "conf_threshold": 0.35,
+  "iou_threshold": 0.5,
+  "input_video": "/app/data/inputs/people-detection.mp4",
+  "output_video": "/app/data/outputs/annotated_people_detection_full.mp4",
+  "log_path": "/app/logs/detections_cam-subway-01_sprint1-full-benchmark.jsonl"
+}

@@ -1,0 +1,196 @@
+{
+  "evaluation_task": "Sprint 2 S2.5 Head-to-Head Comparison",
+  "timestamp": "2026-11-10T08:16:49Z",
+  "baseline": {
+    "model_key": "baseline",
+    "model_name": "yolov8n.pt",
+    "operational_thresholds": {
+      "conf": 0.35,
+      "nms_iou": 0.65,
+      "matching_iou": 0.5
+    },
+    "aggregate_metrics": {
+      "total_ground_truth": 972,
+      "true_positives": 582,
+      "false_positives": 94,
+      "false_negatives": 390,
+      "precision": 0.8609467455621301,
+      "recall": 0.5987654320987654,
+      "f1_score": 0.7063106796116505,
+      "mAP_50": 0.7532113143125667,
+      "mAP_50_95": 0.5170961278410474,
+      "ap_per_iou": {
+        "0.50": 0.7532113143125667,
+        "0.55": 0.7354658463329036,
+        "0.60": 0.7105755920447616,
+        "0.65": 0.6744412750541072,
+        "0.70": 0.6235236414511643,
+        "0.75": 0.5505030127038635,
+        "0.80": 0.48427376355476703,
+        "0.85": 0.353369564284933,
+        "0.90": 0.22116326130208555,
+        "0.95": 0.06443400736932188
+      }
+    },
+    "benchmark_cpu": {
+      "device": "CPU",
+      "warmup_runs": 10,
+      "measured_images": 240,
+      "mean_inference_ms": 58.70281992500092,
+      "median_inference_ms": 47.98971849996292,
+      "p95_inference_ms": 110.18897619999277,
+      "mean_total_ms": 62.70553320833301,
+      "median_total_ms": 51.347779499991475,
+      "p95_total_ms": 116.6484893000216,
+      "fps_inference_only": 17.034956775119255,
+      "fps_total_pipeline": 15.947555962527225
+    }
+  },
+  "fine_tuned": {
+    "model_key": "fine_tuned",
+    "model_name": "best.pt",
+    "operational_thresholds": {
+      "conf": 0.35,
+      "nms_iou": 0.65,
+      "matching_iou": 0.5
+    },
+    "aggregate_metrics": {
+      "total_ground_truth": 972,
+      "true_positives": 572,
+      "false_positives": 142,
+      "false_negatives": 400,
+      "precision": 0.8011204481792717,
+      "recall": 0.588477366255144,
+      "f1_score": 0.6785290628707,
+      "mAP_50": 0.6943981298044772,
+      "mAP_50_95": 0.442483335203249,
+      "ap_per_iou": {
+        "0.50": 0.6943981298044772,
+        "0.55": 0.6736397041646639,
+        "0.60": 0.6490682042822264,
+        "0.65": 0.5851564536589441,
+        "0.70": 0.531102697458278,
+        "0.75": 0.4608618651992399,
+        "0.80": 0.3832970677391153,
+        "0.85": 0.2594391039369821,
+        "0.90": 0.15728632657072966,
+        "0.95": 0.030583799217833284
+      }
+    },
+    "benchmark_cpu": {
+      "device": "CPU",
+      "warmup_runs": 10,
+      "measured_images": 240,
+      "mean_inference_ms": 56.3820436458362,
+      "median_inference_ms": 47.407421000002614,
+      "p95_inference_ms": 112.27227109999659,
+      "mean_total_ms": 60.920974408332285,
+      "median_total_ms": 51.058966000027795,
+      "p95_total_ms": 119.64753834998304,
+      "fps_inference_only": 17.73614319980134,
+      "fps_total_pipeline": 16.41470790170467
+    }
+  },
+  "comparison_table": [
+    {
+      "metric": "Checkpoint File",
+      "baseline": "yolov8n.pt",
+      "fine_tuned": "best.pt"
+    },
+    {
+      "metric": "Evaluated Images",
+      "baseline": 240,
+      "fine_tuned": 240
+    },
+    {
+      "metric": "Total Ground Truth Persons",
+      "baseline": 972,
+      "fine_tuned": 972
+    },
+    {
+      "metric": "Operational Confidence Threshold",
+      "baseline": 0.35,
+      "fine_tuned": 0.35
+    },
+    {
+      "metric": "Operational NMS IoU Threshold",
+      "baseline": 0.65,
+      "fine_tuned": 0.65
+    },
+    {
+      "metric": "Ground Truth Matching IoU",
+      "baseline": 0.5,
+      "fine_tuned": 0.5
+    },
+    {
+      "metric": "True Positives (TP)",
+      "baseline": 582,
+      "fine_tuned": 572
+    },
+    {
+      "metric": "False Positives (FP)",
+      "baseline": 94,
+      "fine_tuned": 142
+    },
+    {
+      "metric": "False Negatives (FN)",
+      "baseline": 390,
+      "fine_tuned": 400
+    },
+    {
+      "metric": "Operational Precision",
+      "baseline": "0.8609",
+      "fine_tuned": "0.8011"
+    },
+    {
+      "metric": "Operational Recall",
+      "baseline": "0.5988",
+      "fine_tuned": "0.5885"
+    },
+    {
+      "metric": "Operational F1-Score",
+      "baseline": "0.7063",
+      "fine_tuned": "0.6785"
+    },
+    {
+      "metric": "mAP@50 (IoU 0.50)",
+      "baseline": "0.7532",
+      "fine_tuned": "0.6944"
+    },
+    {
+      "metric": "mAP@50-95 (COCO)",
+      "baseline": "0.5171",
+      "fine_tuned": "0.4425"
+    },
+    {
+      "metric": "Mean CPU Inference Latency (ms)",
+      "baseline": "58.70",
+      "fine_tuned": "56.38"
+    },
+    {
+      "metric": "Median CPU Inference Latency (ms)",
+      "baseline": "47.99",
+      "fine_tuned": "47.41"
+    },
+    {
+      "metric": "P95 CPU Inference Latency (ms)",
+      "baseline": "110.19",
+      "fine_tuned": "112.27"
+    },
+    {
+      "metric": "Mean Total Latency (ms)",
+      "baseline": "62.71",
+      "fine_tuned": "60.92"
+    },
+    {
+      "metric": "Throughput (FPS, Inference Only)",
+      "baseline": "17.03",
+      "fine_tuned": "17.74"
+    },
+    {
+      "metric": "Throughput (FPS, Total Pipeline)",
+      "baseline": "15.95",
+      "fine_tuned": "16.41"
+    }
+  ]
+}

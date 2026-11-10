@@ -1,0 +1,24 @@
+name: visionstream-serving
+
+services:
+  serving:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.serving
+    image: visionstream-ai:serving-sprint3
+    container_name: visionstream-serving-gateway
+    working_dir: /app
+    ports:
+      - "${SERVING_PORT:-8085}:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - YOLO_CONFIG_DIR=/app/data/models
+      - TORCH_HOME=/app/data/models
+    volumes:
+      - ./src:/app/src:ro
+      - ./data/models:/app/data/models:ro
+      - ./data/inputs:/app/data/inputs:ro
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    restart: unless-stopped

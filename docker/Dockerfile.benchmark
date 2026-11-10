@@ -1,0 +1,4 @@
+# Dockerfile for Gate 8: ONNX Runtime CPU Benchmark
+FROM visionstream-ai:sprint-1
+
+RUN pip install --no-cache-dir onnx onnxruntime onnxslim colorama psutil

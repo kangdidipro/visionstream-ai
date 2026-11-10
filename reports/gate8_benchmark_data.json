@@ -1,0 +1,38 @@
+{
+  "pytorch_cpu": {
+    "init_time_ms": 227.70261764526367,
+    "cold_latency_ms": 3616.022825241089,
+    "mean_latency_ms": 85.94762325286865,
+    "median_latency_ms": 78.44400405883789,
+    "p95_latency_ms": 132.85270929336542,
+    "p99_latency_ms": 165.68597316741958,
+    "throughput_fps": 11.634524761198161,
+    "detections_count": 1
+  },
+  "onnxruntime_cpu_direct": {
+    "init_time_ms": 171.92482948303223,
+    "cold_latency_ms": 144.64545249938965,
+    "raw_inference_mean_ms": 89.77816343307495,
+    "raw_inference_p95_ms": 112.72892951965332,
+    "mean_latency_ms": 92.20834255218506,
+    "median_latency_ms": 89.63048458099365,
+    "p95_latency_ms": 115.03421068191528,
+    "p99_latency_ms": 131.84997081756612,
+    "throughput_fps": 10.844619297162401,
+    "detections_count": 1
+  },
+  "ultralytics_onnx_wrapper": {
+    "init_time_ms": 29.231548309326172,
+    "mean_latency_ms": 240.28987407684326,
+    "median_latency_ms": 227.94592380523682,
+    "p95_latency_ms": 357.54116773605347,
+    "throughput_fps": 4.161614228918847
+  },
+  "consistency": {
+    "pt_count": 1,
+    "ort_count": 1,
+    "matched_count": 1,
+    "mean_iou": 0.9984666191905314,
+    "mean_conf_diff": 0.025853872299194336
+  }
+}

@@ -1,0 +1,21 @@
+# MediaMTX Configuration for VisionStream AI RTSP Streaming
+# Minimal low-latency H.264 RTSP server
+logLevel: info
+logDestinations: [stdout]
+
+# RTSP Server Configuration
+rtsp: yes
+rtspAddress: :8554
+protocols: [tcp]
+
+# Disable unused protocols to conserve memory and ports
+rtmp: no
+hls: no
+webrtc: no
+srt: no
+
+# Paths configuration
+paths:
+  live/stream1:
+    source: publisher
+    sourceOnDemand: no

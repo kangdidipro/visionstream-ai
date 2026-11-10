@@ -1,0 +1,8 @@
+{
+  "test_image_count": 240,
+  "test_label_count": 240,
+  "total_person_annotations": 972,
+  "image_hash_mismatches": [],
+  "label_mismatches": [],
+  "verdict": "PASS"
+}

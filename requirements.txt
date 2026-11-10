@@ -1,0 +1,8 @@
+# PyTorch CPU-only installation is handled in Dockerfile via --extra-index-url
+ultralytics>=8.3.0
+opencv-python-headless>=4.10.0.84
+numpy>=1.26.0,<2.0.0
+lapx>=0.5.5
+filterpy>=1.4.5
+tqdm>=4.66.0
+pydantic>=2.7.0

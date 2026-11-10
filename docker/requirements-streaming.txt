@@ -1,0 +1,5 @@
+# Streaming container requirements
+# Base ultralytics, cv2, torch are already present in visionstream-ai:sprint-1
+PyGObject>=3.42.0
+pydantic>=2.7.0
+pytest>=8.0.0

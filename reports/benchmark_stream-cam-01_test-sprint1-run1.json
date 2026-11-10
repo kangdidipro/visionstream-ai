@@ -1,0 +1,22 @@
+{
+  "stream_id": "stream-cam-01",
+  "tracking_session_id": "test-sprint1-run1",
+  "video_duration_sec": 49.67,
+  "total_video_frames": 596,
+  "processed_frames": 50,
+  "total_pipeline_time_sec": 9.744,
+  "average_pipeline_fps": 5.13,
+  "average_inference_latency_ms": 94.01,
+  "average_pipeline_frame_latency_ms": 190.02,
+  "unique_track_ids_count": 1,
+  "unique_track_ids": [
+    1
+  ],
+  "total_detections_logged": 30,
+  "model_path": "/app/data/models/yolov8n.pt",
+  "conf_threshold": 0.35,
+  "iou_threshold": 0.5,
+  "input_video": "/app/data/inputs/people-detection.mp4",
+  "output_video": "/app/data/outputs/annotated_tracking.mp4",
+  "log_path": "/app/logs/detections_stream-cam-01_test-sprint1-run1.jsonl"
+}

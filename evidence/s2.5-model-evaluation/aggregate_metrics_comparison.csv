@@ -1,0 +1,21 @@
+metric,baseline,fine_tuned
+Checkpoint File,yolov8n.pt,best.pt
+Evaluated Images,240,240
+Total Ground Truth Persons,972,972
+Operational Confidence Threshold,0.35,0.35
+Operational NMS IoU Threshold,0.65,0.65
+Ground Truth Matching IoU,0.5,0.5
+True Positives (TP),582,572
+False Positives (FP),94,142
+False Negatives (FN),390,400
+Operational Precision,0.8609,0.8011
+Operational Recall,0.5988,0.5885
+Operational F1-Score,0.7063,0.6785
+mAP@50 (IoU 0.50),0.7532,0.6944
+mAP@50-95 (COCO),0.5171,0.4425
+Mean CPU Inference Latency (ms),58.70,56.38
+Median CPU Inference Latency (ms),47.99,47.41
+P95 CPU Inference Latency (ms),110.19,112.27
+Mean Total Latency (ms),62.71,60.92
+"Throughput (FPS, Inference Only)",17.03,17.74
+"Throughput (FPS, Total Pipeline)",15.95,16.41

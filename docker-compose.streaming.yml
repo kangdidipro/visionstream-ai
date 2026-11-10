@@ -1,0 +1,69 @@
+name: visionstream-streaming
+
+networks:
+  streaming-net:
+    driver: bridge
+
+services:
+  # 1. MediaMTX RTSP Server
+  mediamtx:
+    image: bluenviron/mediamtx:1.9.3
+    container_name: visionstream-rtsp-server
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8554:8554"
+    volumes:
+      - ./docker/mediamtx.yml:/mediamtx.yml:ro
+    networks:
+      - streaming-net
+
+  # 2. Sample Video Publisher (FFmpeg looping approved people-detection.mp4)
+  video-publisher:
+    image: visionstream-ai:sprint-1
+    container_name: visionstream-rtsp-publisher
+    restart: unless-stopped
+    depends_on:
+      - mediamtx
+    volumes:
+      - ./data/inputs:/app/data/inputs:ro
+    networks:
+      - streaming-net
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Waiting for MediaMTX RTSP server to become ready...";
+        sleep 2;
+        while true; do
+          ffmpeg -re -stream_loop -1 -i /app/data/inputs/people-detection.mp4 -c:v copy -an -f rtsp -rtsp_transport tcp rtsp://mediamtx:8554/live/stream1;
+          echo "Publisher stream ended or disconnected, reconnecting in 2s...";
+          sleep 2;
+        done
+
+  # 3. GStreamer + YOLOv8 + ByteTrack Ingestion Service
+  streaming-ingest:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.streaming
+    image: visionstream-ai:streaming-sprint3
+    container_name: visionstream-streaming-ingest
+    restart: unless-stopped
+    depends_on:
+      - mediamtx
+      - video-publisher
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - RTSP_URL=rtsp://mediamtx:8554/live/stream1
+      - MODEL_PATH=/app/data/models/yolov8n.pt
+      - YOLO_CONFIG_DIR=/app/data/models
+      - TORCH_HOME=/app/data/models
+    volumes:
+      - ./src:/app/src:ro
+      - ./data/inputs:/app/data/inputs:ro
+      - ./data/models:/app/data/models:ro
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    networks:
+      - streaming-net
+    command: ["python3", "-m", "src.streaming.main"]

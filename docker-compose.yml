@@ -1,0 +1,22 @@
+services:
+  visionstream:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: visionstream-ai:sprint-1
+    container_name: visionstream-ai-runner
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - YOLO_CONFIG_DIR=/app/data/models
+      - TORCH_HOME=/app/data/models
+    volumes:
+      - ./src:/app/src
+      - ./data/inputs:/app/data/inputs
+      - ./data/outputs:/app/data/outputs
+      - ./data/models:/app/data/models
+      - ./data/datasets:/app/data/datasets
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    command: ["python3", "-c", "print('VisionStream AI Container Ready.')"]
