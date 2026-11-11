@@ -24,7 +24,7 @@ Rather than presenting theoretical models or synthetic benchmarks, this reposito
 
 - **Computer Vision & Tracking:** Ultralytics YOLOv8, OpenCV 4.11, ByteTrack, NumPy
 - **Serving & Microservices:** FastAPI, Uvicorn, Pydantic, GStreamer 1.26 (PyGObject), MediaMTX, FFmpeg
-- **Optimization & Acceleration:** TensorRT 10.x, ONNX 1.23, ONNX Runtime 1.31, `onnxslim`, CUDA 12.2
+- **Optimization & Acceleration:** TensorRT (cloud GPU benchmark), ONNX 1.23, ONNX Runtime 1.31, `onnxslim` 0.1.99
 - **MLOps & Observability:** Prometheus client (`/metrics`), Python structured JSONL logging, Request UUID tracing
 - **Infrastructure & Environment:** Docker, Docker Compose, Linux WSL2, Git
 
@@ -79,7 +79,7 @@ flowchart TD
 ### D. RTSP Video Streaming with GStreamer & ByteTrack
 - Deployed a containerized streaming ecosystem with MediaMTX and GStreamer H.264 decoding.
 - **Measured Throughput:** Network ingestion verified at **12.02 FPS**; full downstream analytics (YOLOv8 + ByteTrack) measured at **5.51 FPS** on local CPU.
-- Configured real-time frame-dropping backpressure policies (`appsink drop=true max-buffers=2`) to guarantee low latency.
+- Configured real-time frame-dropping backpressure policies (`appsink drop=true max-buffers=2`) to prevent frame backlog and buffer bloat.
 - Verified automatic stream recovery against abrupt RTSP source disconnects.
 - *Detailed Evidence:* [Streaming Pipeline Architecture](docs/architecture/streaming-pipeline.md)
 
@@ -101,10 +101,9 @@ Authentic detection outputs and model validation curves from Sprints 1 and 2:
 | ![YOLOv8 Detection Output](images/portfolio/detection/yolov8-detection-example.jpg) | ![Training Metrics](images/portfolio/evaluation/training-metrics.png) |
 | *Person bounding boxes and confidence scores on video footage* | *Empirical training loss, precision, recall, and mAP curves* |
 
-| Holdout Evaluation Visual Comparison: Baseline vs Fine-Tuned |
-| :---: |
-| ![Holdout Comparison](images/portfolio/evaluation/baseline-vs-finetuned.jpg) |
-| *Ground Truth (left) vs Baseline YOLOv8n (center, mAP50 75.32%) vs Fine-Tuned Model (right, mAP50 69.44%)* |
+**Holdout Evaluation Visual Comparison: Baseline vs Fine-Tuned**
+![Holdout Comparison](images/portfolio/evaluation/baseline-vs-finetuned.jpg)
+*Figure: Ground Truth (left) vs Baseline YOLOv8n (center, mAP50 75.32%) vs Fine-Tuned Model (right, mAP50 69.44%)*
 
 ### 5.2 NVIDIA GPU Acceleration & TensorRT Benchmark
 Controlled in-memory GPU benchmarks executed on an NVIDIA Tesla T4:
@@ -117,10 +116,9 @@ Controlled in-memory GPU benchmarks executed on an NVIDIA Tesla T4:
 ### 5.3 FastAPI Model Serving & API Specification
 Verified FastAPI container endpoints and OpenAPI 3.1.0 schema:
 
-| FastAPI Serving Gateway & Swagger UI Endpoints |
-| :---: |
-| ![FastAPI Swagger UI](images/portfolio/model-serving/fastapi-swagger.png) |
-| *Interactive Swagger UI (:8085/docs) exposing health probes, model metadata, and inference endpoints* |
+**FastAPI Serving Gateway & Swagger UI Endpoints**
+![FastAPI Swagger UI](images/portfolio/model-serving/fastapi-swagger.png)
+*Figure: Interactive Swagger UI (:8085/docs) exposing health probes, model metadata, and inference endpoints*
 
 ### 5.4 ONNX Runtime CPU Benchmark & Thread Scaling
 Empirical CPU optimization results on AMD Ryzen 7 6800U (8C/16T):
